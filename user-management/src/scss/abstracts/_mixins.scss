@@ -1,0 +1,32 @@
+/* All breakpoints match Angular Material predefined breakpoints (see: https://material.angular.io/cdk/layout/overview) */
+@mixin respond($breakpoint) {
+  @if $breakpoint == phone {
+    @media (max-width: 599.98px) {
+      @content;
+    }
+  }
+
+  @if $breakpoint == tab-port {
+    @media (max-width: 839.98px) {
+      @content;
+    }
+  }
+
+  @if $breakpoint == tab-land {
+    @media (max-width: 1279.98px) {
+      @content;
+    }
+  }
+
+  @if $breakpoint == small-desktop {
+    @media (min-width: 1280px) {
+      @content;
+    }
+  }
+
+  @if $breakpoint == large-desktop {
+    @media (min-width: 1920px) {
+      @content;
+    }
+  }
+}
