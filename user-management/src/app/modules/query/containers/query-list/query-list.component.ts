@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
+import {UserDTO, UsersService} from "@user-management/data-access";
 
 @Component({
   selector: 'app-query-list',
@@ -10,24 +11,19 @@ import { MatSort } from '@angular/material/sort';
   standalone: false
 })
 export class QueryListComponent implements OnInit {
-  public displayedColumns: string[] = ['name', 'email'];
+  public displayedColumns: string[] = ['id', 'name', 'email'];
   public dataSource: MatTableDataSource<any>;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-  constructor() {
-    console.log(process.env.API_URL)
-    const users = [
-      { name: 'João Silva', email: 'joao.silva@example.com' },
-      { name: 'Maria Oliveira', email: 'maria.oliveira@example.com' },
-      { name: 'Pedro Souza', email: 'pedro.souza@example.com' },
-    ];
-
-    this.dataSource = new MatTableDataSource(users);
-  }
+  constructor(private userService: UsersService) {}
 
   ngOnInit(): void {
+    this.userService.fetchAll().subscribe((users: UserDTO[]) => {
+      this.dataSource = new MatTableDataSource(users);
+    });
+    
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
   }

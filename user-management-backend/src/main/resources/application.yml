@@ -1,0 +1,20 @@
+server:
+  port: 3333
+
+spring:
+  application:
+    name: user-management-backend
+  datasource:
+    url: jdbc:postgresql://localhost:5432/postgres
+    username: postgres
+    password: postgres
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    show-sql: true
+  flyway:
+    enabled: true
+    locations: classpath:db/migrations
+    baseline-on-migrate: true
+    baseline-version: 1
+  hibernate:
+    ddl-auto: none
