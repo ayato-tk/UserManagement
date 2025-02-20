@@ -1,0 +1,19 @@
+<h2 mat-dialog-title>Registrar Usuário</h2>
+<mat-dialog-content>
+  <form [formGroup]="userForm">
+
+    <mat-form-field appearance="fill">
+      <mat-label>Nome</mat-label>
+      <input matInput formControlName="name">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Email</mat-label>
+      <input matInput formControlName="email">
+    </mat-form-field>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button (click)="close()">Cancelar</button>
+  <button mat-button color="primary" (click)="save()" [disabled]="!userForm.valid">Salvar</button>
+</mat-dialog-actions>

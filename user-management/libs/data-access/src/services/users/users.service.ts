@@ -18,4 +18,8 @@ export class UsersService {
         return this.httpClient.get<UserDTO[]>(this.url);
     }
 
+    public createUser(user: UserDTO): Observable<UserDTO> {
+        return this.httpClient.post<UserDTO>(this.url, user);
+    }
+
 }

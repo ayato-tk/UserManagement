@@ -1,11 +1,7 @@
-import { Component, inject, signal } from '@angular/core';
-import { RouterModule } from '@angular/router';
-import { DOCUMENT } from '@angular/common';
+import { Component, OnInit } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
-
-export type Theme = 'light' | 'dark';
-
-
+import { RouterModule } from '@angular/router';
+import { ThemeModeService } from 'src/app/shared';
 
 @Component({
   selector: 'app-main-container',
@@ -15,24 +11,6 @@ export type Theme = 'light' | 'dark';
   standalone: true,
 })
 export class MainContainerComponent {
-  private readonly document = inject(DOCUMENT);
+  constructor(public themeModeService: ThemeModeService) {}
 
-  private readonly currentTheme = signal<Theme>('light');
-
-  toggleTheme() {
-    if (this.currentTheme() === 'light') {
-      this.setTheme('dark');
-      return;
-    }
-    this.setTheme('light');
-  }
-
-  setTheme(theme: Theme) {
-    this.currentTheme.set(theme);
-    if (theme === 'dark') {
-      this.document.documentElement.classList.add('dark-mode');
-      return;
-    }
-    this.document.documentElement.classList.remove('dark-mode');
-  }
 }

@@ -4,6 +4,8 @@
     <input matInput placeholder="Ex. João" #input>
   </mat-form-field>
 
+  <button mat-raised-button color="primary" (click)="openUserDialog()">Adicionar Usuário</button>
+
   <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
     <ng-container matColumnDef="id">

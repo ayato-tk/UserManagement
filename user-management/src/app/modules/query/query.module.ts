@@ -11,6 +11,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { QUERY_ROUTES } from './query.routes';
 import { RouterModule } from '@angular/router';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [QueryListComponent],
@@ -23,6 +24,7 @@ import { RouterModule } from '@angular/router';
     MatPaginatorModule,
     MatSortModule,
     MatIconModule,
+    MatDialogModule, 
     MatButtonModule,
     RouterModule.forChild(QUERY_ROUTES),
   ],
